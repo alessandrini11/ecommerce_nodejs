@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+  <title>
+    <%= pageTitle %>
+  </title>
+  </head>
+
+  <body>
+    <%- include('../includes/navigation.ejs') %>
+      <main>
+        <div>
+          <article>
+            <header>
+              <h3>
+                <%= product.title %>
+              </h3>
+            </header>
+            <div>
+              <img src="/<%= product.imageUrl  %> " alt="<%= product.title %>">
+            </div>
+            <div>
+              <h3>
+                $<%= product.price %>
+              </h3>
+              <p>
+                <%= product.description %>
+              </p>
+            </div>
+            <div>
+              <a href="/products/<%= product.id %> ">details</a>
+              <%- include('../includes/action.ejs',{product: product}) %>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <%- include('../includes/end.ejs') %>

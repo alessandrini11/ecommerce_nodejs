@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs') %> 
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %> 
+    <main>
+        <div>
+            <form action="/signup" method="post">
+                <div>
+                    <label for="name">Name</label>
+                    <input value="<%= oldInput.name %> " type="text" id="name" name="name">
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input value="<%= oldInput.email %>" type="text" id="email" name="email">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input value="<%= oldInput.password %>" type="password" id="password" name="password">
+                </div>
+                <div>
+                    <label for="confirmpwd">Confirm Password</label>
+                    <input value="<%= oldInput.confirmpwd %>" type="password" id="confirmpwd" name="confirmpwd">
+                </div>
+                <button>Sign Up</button>
+            </form>
+        </div>
+    </main>
+</body>

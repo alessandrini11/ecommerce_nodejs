@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <main>
+                <h1>Admin Panel</h1>
+                <main>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (products.length > 0) { %>
+                                <% for (product of products ) { %>
+                                    <tr>
+                                        <td>
+                                            <%= product.title %>
+                                        </td>
+                                        <td>
+                                            <img style="height: 100px; width: 100px;" src="/<%= product.imageUrl %>" alt="">
+
+                                        </td>
+                                        <td>
+                                            <%= product.description %>
+                                        </td>
+                                        <td>
+                                            <%= product.price %>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <a href="">show</a>
+                                                <a
+                                                    href="/admin/edit-product/<%= product._id %>?edit=<%= true %>">edit</a>
+                                                <form action="/admin/delete-product" method="post">
+                                                    <input type="hidden" name="productId" value="<%= product._id %> ">
+                                                    <button type="submit">delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td>No products found</td>
+                                            </tr>
+                                            <% } %>
+
+                        </tbody>
+                    </table>
+
+                </main>
+                <%- include('../includes/end.ejs') %>

@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation') %>
+            <h1>
+                <%= isEditing ? 'Edit' : 'Add new' %> product
+            </h1>
+            <form enctype="multipart/form-data" action="/admin/<%= isEditing ? 'edit' : 'add' %>-product" method="post">
+                <div>
+                    <label for="">Title</label>
+                    <input name="title" type="text" value="<% if (isEditing) {  %> <%= product.title %> <% } %> "
+                        placeholder="title" />
+                </div>
+                <!-- <div>
+                    <label for="">Image Url</label>
+                    <input name="image" type="text" value="<% if (isEditing) {  %> <%= product.imageUrl %> <% } %> "
+                        placeholder="image" />
+                </div> -->
+                <div>
+                    <label for="image">Image</label>
+                    <input name="image" type="file" value="<% if (isEditing) {  %> <%= product.imageUrl %> <% } %> "
+                        placeholder="image" />
+                </div>
+                <div>
+                    <label for="">Description</label>
+                    <input name="description" type="text">
+                </div>
+                <div>
+                    <label for="">Price (FCFA)</label>
+                    <input name="price" type="text" value="<% if (isEditing) {  %> <%= product.price %> <% } %> "
+                        placeholder="price" />
+                </div>
+                <% if (isEditing) { %>
+                    <input type="hidden" name="productId" value="<%= product.id %> ">
+                    <% } %>
+                        <button type="submit">
+                            <%= isEditing ? 'Update' : 'Add' %> Product
+                        </button>
+            </form>
+    </body>
+
+    </html>

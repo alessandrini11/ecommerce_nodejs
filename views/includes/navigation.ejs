@@ -1,0 +1,51 @@
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+            </li>
+            <li>
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+            </li>
+            <% if (isAuthenticated) {%>
+            <li>
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+            </li>
+            <li>
+                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
+            </li>
+
+            <li>
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add
+                    Product</a>
+            </li>
+            <li>
+                <a class="<%= path === '/admin/admin-products' ? 'active' : '' %>" href="/admin/products">Admin
+                    Products</a>
+            </li>
+            <% } %>
+            <!-- <li>
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">AddProduct</a>
+            </li> -->
+        </ul>
+
+        <ul>
+            <% if (!isAuthenticated) {%>
+            <li>
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">login</a>
+            </li>
+            <li>
+                <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Sign Up</a>
+            </li>
+                <% } else { %>
+            <li>
+                <form method="post" action="/logout">
+                    
+                    <button type="submit">logout</button>
+                </form>
+            </li>
+                <% } %>
+        </ul>
+
+    </nav>
+</header>
